@@ -11,7 +11,12 @@ sort.o: sort.cpp
 
 .PHONY: test
 test:
-	echo TBD
+	./sort c b a | diff output -
+	./sort a b c | diff output -
+	./sort b a c | diff output -
+	./sort b c a | diff output -
+	./sort a c b | diff output -
+	./sort c a b | diff output -
 
 .PHONY: run
 run: sort
