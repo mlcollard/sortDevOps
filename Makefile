@@ -10,7 +10,7 @@ sort.o: sort.cpp
 	g++ -std=c++11 -c sort.cpp
 
 .PHONY: test
-test:
+test: sort output
 	./sort c b a | diff output -
 	./sort a b c | diff output -
 	./sort b a c | diff output -
@@ -18,10 +18,14 @@ test:
 	./sort a c b | diff output -
 	./sort c a b | diff output -
 
+output:
+	echo "a b c " > output
+
 .PHONY: run
 run: sort
 	./sort c b a 
 
 .PHONY: clean
 clean:
-	@rm -f sort sort.o
+	@rm -f sort sort.o output
+
